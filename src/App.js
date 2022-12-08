@@ -4,8 +4,8 @@ import CalcBody from './commponents/CalcBody/CalcBody';
 function App() {
   return (
 
-    <CalcBody />
-    
+    <CalcBody></CalcBody>
+
   );
 }
 
