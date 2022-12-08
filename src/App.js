@@ -1,7 +1,12 @@
 import './App.css';
+import CalcBody from './commponents/CalcBody/CalcBody';
 
 function App() {
-  //return ();
+  return (
+
+    <CalcBody />
+    
+  );
 }
 
 export default App;
