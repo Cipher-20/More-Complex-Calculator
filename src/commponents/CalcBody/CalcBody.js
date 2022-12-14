@@ -3,32 +3,30 @@ import Button from "../Button/Button";
 
 function CalcBody() {
 
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState("0");
     const [result, setResult] = useState(0);
 
     const addText = (val) =>{
-        setInput((text) => [...text, val + ""])
+
+        if (input === "0") {
+            
+            setInput("");
+        }
+
+        setInput((text) => [...text, val + ""]);
+
+    }
+
+    const commaHandler = () =>{
+        if (input.includes(".")) {
+            
+            setInput(input);
+        }
     }
     
-    const handler = () => {
-        console.log(1);
-    }
 
 
     const deleteHandler = () =>{
-
-        // if (input.length > 1) {
-
-        //     const value = input.slice(0,-1);
-        //     setInput(value);
-
-        // }else{
-
-        //     const value = 0;
-        //     setInput(value);
-
-        // }
-
 
         const value = input.slice(0,-1);
         setInput(value);
@@ -80,10 +78,8 @@ function CalcBody() {
     const acHandler = () =>{
        setResult(0);
 
-       setInput("")
+       setInput("0")
     }
-
-
 
 
 
@@ -112,7 +108,7 @@ function CalcBody() {
             <Button symbol="8" handleClick={addText}/>
             <Button symbol="9" handleClick={addText}/>
             <button onClick={minusHandler}>-</button>
-            <Button symbol="." handleClick={addText}/>
+            <button onClick={() => {addText("."); commaHandler();}} >.</button>
             <Button symbol="0" handleClick={addText}/>
             <button className="span-two">=</button>
 
