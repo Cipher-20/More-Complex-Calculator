@@ -11,6 +11,18 @@ body{
     grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 }
 
+.button-grid{
+    display: grid;
+    background: #eee;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    width: 383px;
+    height: 495px;
+    margin-top: 5px;
+    grid-template-columns: repeat(4,6rem);
+    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+}
+
 .span-two{
     grid-column: span 2;
 }
@@ -25,7 +37,12 @@ body{
     padding: .75rem;
     word-wrap: break-word;  
     word-wrap: break-all;  
+    border-radius: 20px;
 
+}
+
+.operator{
+    color: white;
 }
 
 .output .previous-operand{
@@ -36,4 +53,11 @@ body{
 .output .currnet-operand{
     color: white;
     font-size: 2.5rem
+}
+
+.btn{
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    margin: 2px;
+    
 }

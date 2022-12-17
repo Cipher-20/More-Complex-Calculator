@@ -5,6 +5,7 @@ function CalcBody() {
 
     const [input, setInput] = useState("0");
     const [result, setResult] = useState(0);
+    const [operator, setOperator] = useState("");
 
     const addText = (val) =>{
 
@@ -14,6 +15,12 @@ function CalcBody() {
         }
 
         setInput((text) => [...text, val + ""]);
+
+    }
+
+    const addOperator = (val) =>{
+
+        setOperator(val);
 
     }
 
@@ -29,7 +36,15 @@ function CalcBody() {
     const deleteHandler = () =>{
 
         const value = input.slice(0,-1);
-        setInput(value);
+        if (value.length == 0) {
+            setInput("0");
+            
+        }else{
+            setInput(value);
+
+        }
+       setOperator("");
+
 
     }
 
@@ -40,7 +55,7 @@ function CalcBody() {
 
         setResult(value);
 
-        setInput("")
+        setInput("0")
     }
 
     const minusHandler = () =>{
@@ -51,7 +66,7 @@ function CalcBody() {
  
          setResult(value);
  
-         setInput("")
+         setInput("0")
      }
 
      const multiplyHandler = () =>{
@@ -61,8 +76,8 @@ function CalcBody() {
          let value = Number(result) * Number(inputNumber);
  
          setResult(value);
- 
-         setInput("")
+        
+         setInput("0")
      }
 
      const divisionHandler = () =>{
@@ -72,11 +87,13 @@ function CalcBody() {
 
         setResult(value);
 
-        setInput("")
+        setInput("0")
     }
 
     const acHandler = () =>{
        setResult(0);
+
+       setOperator("");
 
        setInput("0")
     }
@@ -86,31 +103,34 @@ function CalcBody() {
    return(
    <>
 
-       <div className="calculator-grid">
+       <div className="calculator-grid" >
 
            <div className="output">
                <div className="previous-operand">{input}</div>
+               <div className="operator">{operator}</div>
                <div className="currnet-operand">{result}</div>
            </div>
-
-           <button className="span-two" onClick={acHandler}>AC</button>    
-           <button onClick={deleteHandler}>DEL</button> 
-           <button onClick={divisionHandler}>÷</button>
+            <div className="button-grid">
+           <button className="span-two btn" onClick={acHandler}>AC</button>    
+           <button className="btn" onClick={deleteHandler}>DEL</button> 
+           <button className="btn" onClick={() => {addOperator("÷"); divisionHandler(); }}>÷</button>
            <Button symbol="1" handleClick={addText}/>
            <Button symbol="2" handleClick={addText}/>
            <Button symbol="3" handleClick={addText}/>
-           <button onClick={multiplyHandler}>*</button>
+           <button className="btn" onClick={() => { addOperator("*"); multiplyHandler();}}>*</button>
             <Button symbol="4" handleClick={addText}/>
             <Button symbol="5" handleClick={addText}/>
             <Button symbol="6" handleClick={addText}/>
-            <button onClick={plusHandler}>+</button>
+            <button className="btn" onClick={() => {addOperator("+"); plusHandler(); }}>+</button>
             <Button symbol="7" handleClick={addText}/>
             <Button symbol="8" handleClick={addText}/>
             <Button symbol="9" handleClick={addText}/>
-            <button onClick={minusHandler}>-</button>
-            <button onClick={() => {addText("."); commaHandler();}} >.</button>
+            <button className="btn" onClick={() => {addOperator("-"); minusHandler(); }}>-</button>
+            <button  className="btn"onClick={() => {addText("."); commaHandler();}} >.</button>
             <Button symbol="0" handleClick={addText}/>
-            <button className="span-two">=</button>
+            <button className="span-two btn">=</button>
+            </div>
+
 
         </div>
 
