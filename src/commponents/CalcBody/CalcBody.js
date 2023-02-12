@@ -115,8 +115,8 @@ function CalcBody() {
            <button className="btn" onClick={deleteHandler}>DEL</button> 
            <button className="btn" onClick={() => {addOperator("÷"); divisionHandler(); }}>÷</button>
            <Button symbol="1" handleClick={addText}/>
-           <Button symbol="2" handleClick={addText}/>
-           <Button symbol="3" handleClick={addText}/>
+           <Button symbol="1" handleClick={addText}/>
+           <Button symbol="1" handleClick={addText}/>
            <button className="btn" onClick={() => { addOperator("*"); multiplyHandler();}}>*</button>
             <Button symbol="4" handleClick={addText}/>
             <Button symbol="5" handleClick={addText}/>
